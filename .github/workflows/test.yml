@@ -16,4 +16,5 @@ jobs:
         run: |
           ruby dump.rb
         env:
-          SECRET_ENV_ONE: ${{ secrets.SECRET_ENV_ONE }}
+          ENV_SECRET: ${{ secrets.SECRET_ENV_ONE }}
+          ENV_VAR: ${{ secrets.ENV_VARIABLE_ONE }}

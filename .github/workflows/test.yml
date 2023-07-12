@@ -1,0 +1,19 @@
+name: Test Action
+
+on: [pull_request]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - run: |
+          git fetch --no-tags --prune --depth=1 origin +refs/heads/*:refs/remotes/origin/*
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+      - name: Run script
+        run: |
+          ruby dump.rb
+        env:
+          SECRET_ENV_ONE: ${{ secrets.SECRET_ENV_ONE }}
